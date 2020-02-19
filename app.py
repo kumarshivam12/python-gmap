@@ -33,6 +33,9 @@ def getDistance():
                 data="Invalid mode. please, use one of the following mode "+paramList[0]+" ,"+paramList[1]+" ,"+paramList[2]+" ,"+paramList[3]
                 break
         print(mode,startLocation,endLocation,data)
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        print("Current Time =", current_time)
         try:
             directions_result = gmaps.directions(startLocation,
                                         endLocation,
