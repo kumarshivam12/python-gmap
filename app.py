@@ -1,6 +1,7 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request,Response
 from flask_cors import CORS, cross_origin
 import requests
+import json
 import googlemaps 
 from datetime import datetime
 
@@ -43,9 +44,12 @@ def getDistance():
             status="Success"
         except:
             pass                            
-        
-        response={"status":status,"statuscode":statusCode,"data":data}
-        return response
+        return Response(
+            response=json.dumps(
+                {"status":status,"statuscode":statusCode,"data":data}
+            ),
+            mimetype="application/json"
+        )
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80,debug=True)
